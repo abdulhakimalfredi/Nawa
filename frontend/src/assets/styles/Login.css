@@ -1,0 +1,232 @@
+/* ═══════════════════════════════════════
+   🔐 Login Page
+   ═══════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap');
+
+.login-wrapper {
+  min-height: 100vh;
+  background: #141C35;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Nunito', 'Tajawal', sans-serif;
+}
+
+/* ═══ خلفية متحركة ═══ */
+.login-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.login-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.12;
+}
+
+.login-orb-1 {
+  width: 450px;
+  height: 450px;
+  background: #E5A833;
+  top: -120px;
+  right: -80px;
+  animation: loginOrbFloat 8s ease-in-out infinite;
+}
+
+.login-orb-2 {
+  width: 300px;
+  height: 300px;
+  background: #6366f1;
+  bottom: -80px;
+  left: -60px;
+  animation: loginOrbFloat 10s ease-in-out infinite reverse;
+}
+
+@keyframes loginOrbFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-35px); }
+}
+
+/* ═══ البطاقة ═══ */
+.login-card {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 48px 40px;
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  animation: loginFadeIn 0.8s ease both;
+}
+
+@keyframes loginFadeIn {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══ الشعار ═══ */
+.login-logo {
+  width: 64px;
+  height: 64px;
+  background: rgba(229, 168, 51, 0.12);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(229, 168, 51, 0.2);
+  margin-bottom: 8px;
+}
+
+.login-logo-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+}
+
+/* ═══ العناوين ═══ */
+.login-title {
+  font-size: 28px;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -1px;
+  margin: 0;
+}
+
+.login-subtitle {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.35);
+  font-weight: 600;
+  margin: 0 0 20px;
+  font-family: 'Tajawal', sans-serif;
+}
+
+/* ═══ الخطأ ═══ */
+.login-error {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  color: #f87171;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  width: 100%;
+  text-align: center;
+}
+
+/* ═══ الفورم ═══ */
+.login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.login-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.login-input {
+  width: 100%;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'Nunito', sans-serif;
+  outline: none;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.login-input::placeholder {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.login-input:focus {
+  border-color: #E5A833;
+  background: rgba(229, 168, 51, 0.06);
+  box-shadow: 0 0 0 3px rgba(229, 168, 51, 0.1);
+}
+
+/* ═══ الزر ═══ */
+.login-btn {
+  width: 100%;
+  padding: 15px;
+  background: #E5A833;
+  color: #141C35;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  font-family: 'Tajawal', sans-serif;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-top: 4px;
+  box-shadow: 0 6px 24px rgba(229, 168, 51, 0.2);
+}
+
+.login-btn:hover {
+  background: #F5C563;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(229, 168, 51, 0.3);
+}
+
+.login-btn:active {
+  transform: translateY(0);
+}
+
+/* ═══ النص السفلي ═══ */
+.login-footer-text {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.3);
+  font-weight: 600;
+  margin-top: 12px;
+  font-family: 'Tajawal', sans-serif;
+}
+
+.login-link {
+  color: #E5A833;
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 0.2s;
+}
+
+.login-link:hover {
+  color: #F5C563;
+}
+
+/* ═══ ريسبونسف ═══ */
+@media (max-width: 480px) {
+  .login-card {
+    margin: 20px;
+    padding: 36px 24px;
+  }
+
+  .login-title {
+    font-size: 24px;
+  }
+}

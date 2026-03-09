@@ -1,0 +1,10 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" id="letterLogo">
+                <!-- Background Shape (Soft Square) -->
+                <rect x="0" y="0" width="200" height="200" rx="40" fill="#172554" id="bgShape"/>
+                
+                <!-- The Letter "Teh" Body (The Smile/Bowl) -->
+                <path d="M50 85V115C50 142.614 72.3858 165 100 165C127.614 165 150 142.614 150 115V85" stroke="white" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+                
+                <!-- The "Dots" as an Arrow/Chevron -->
+                <path d="M70 65L100 35L130 65" stroke="#fbbf24" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" id="accentShape"/>
+            </svg>

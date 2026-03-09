@@ -1,0 +1,293 @@
+
+/* ═══════════════════════════════════════
+   📅 Meetings
+   ═══════════════════════════════════════ */
+
+.mt-container {
+  max-width: 100%;
+  padding: 10px 0;
+}
+
+/* ═══ الهيدر ═══ */
+.mt-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 28px;
+}
+
+.mt-title {
+  font-size: 32px;
+  font-weight: 900;
+  color: #1a202c;
+  margin: 0 0 4px;
+  letter-spacing: -1px;
+}
+
+.mt-subtitle {
+  font-size: 15px;
+  color: #a0aec0;
+  font-weight: 600;
+  margin: 0;
+  font-family: 'Tajawal', sans-serif;
+}
+
+.mt-btn-add {
+  padding: 10px 24px;
+  border-radius: 10px;
+  border: none;
+  background: #E5A833;
+  color: #141C35;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Tajawal', sans-serif;
+  transition: all 0.2s;
+}
+
+.mt-btn-add:hover {
+  background: #F5C563;
+  transform: translateY(-1px);
+}
+
+/* ═══ النموذج ═══ */
+.mt-form {
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  border: 2px solid #E5A833;
+  animation: mtSlideDown 0.3s ease;
+}
+
+@keyframes mtSlideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.mt-form-row {
+  display: flex;
+  gap: 12px;
+}
+
+.mt-form-row .mt-input {
+  flex: 1;
+}
+
+.mt-input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1.5px solid #e2e8f0;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'Nunito', 'Tajawal', sans-serif;
+  color: #1a202c;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.mt-input:focus {
+  border-color: #E5A833;
+}
+
+.mt-input::placeholder {
+  color: #a0aec0;
+}
+
+.mt-btn-submit {
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: #141C35;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Tajawal', sans-serif;
+  transition: all 0.2s;
+}
+
+.mt-btn-submit:hover {
+  background: #1e2a4a;
+}
+
+/* ═══ الأقسام ═══ */
+.mt-section {
+  margin-bottom: 32px;
+}
+
+.mt-section-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: #a0aec0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  font-family: 'Tajawal', sans-serif;
+}
+
+/* ═══ البطاقات ═══ */
+.mt-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 20px 24px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  border: 2px solid transparent;
+  transition: all 0.2s;
+}
+
+.mt-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.mt-card-upcoming {
+  border-left: 4px solid #E5A833;
+}
+
+.mt-card-past {
+  opacity: 0.7;
+  background: #fafafa;
+}
+
+.mt-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mt-card-info {
+  flex: 1;
+}
+
+.mt-card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a202c;
+  margin: 0 0 4px;
+}
+
+.mt-title-past {
+  text-decoration: line-through;
+  color: #a0aec0;
+}
+
+.mt-card-date {
+  font-size: 13px;
+  color: #a0aec0;
+  font-weight: 600;
+  margin: 0;
+}
+
+.mt-card-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* ═══ الأزرار ═══ */
+.mt-btn-join {
+  padding: 8px 20px;
+  border-radius: 8px;
+  background: #141C35;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s;
+  font-family: 'Tajawal', sans-serif;
+}
+
+.mt-btn-join:hover {
+  background: #1e2a4a;
+  transform: translateY(-1px);
+}
+
+.mt-btn-done {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1.5px solid #22c55e;
+  background: transparent;
+  color: #22c55e;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Tajawal', sans-serif;
+}
+
+.mt-btn-done:hover {
+  background: #f0fdf4;
+}
+
+.mt-btn-undo {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  background: #f0f4ff;
+  color: #6366f1;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.mt-btn-undo:hover {
+  background: #e0e7ff;
+}
+
+.mt-btn-delete {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  background: #fef2f2;
+  color: #ef4444;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.mt-btn-delete:hover {
+  background: #fee2e2;
+}
+
+/* ═══ الملاحظات ═══ */
+.mt-notes {
+  width: 100%;
+  margin-top: 12px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1.5px solid #e2e8f0;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: 'Nunito', 'Tajawal', sans-serif;
+  color: #4a5568;
+  min-height: 70px;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.mt-notes:focus {
+  border-color: #E5A833;
+}
+
+.mt-notes::placeholder {
+  color: #cbd5e1;
+}
+
+/* ═══ فارغ ═══ */
+.mt-empty {
+  text-align: center;
+  color: #a0aec0;
+  font-size: 14px;
+  padding: 32px;
+  font-weight: 600;
+  font-family: 'Tajawal', sans-serif;
+}

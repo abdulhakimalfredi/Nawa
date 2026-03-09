@@ -1,0 +1,597 @@
+/* ═══════════════════════════════════════════════════════════
+   🎨 App.css — الملف الرئيسي للتنسيقات
+   يتحكم في: الهيكل العام، السايدبار، التعليمات، والريسبونسف
+   باقي الصفحات لها ملفات منفصلة:
+   - Login.css → صفحة الدخول والتسجيل
+   - LandingPage.css → صفحة الهبوط
+   - KnowledgeBase.css → قاعدة المعرفة
+   ═══════════════════════════════════════════════════════════ */
+
+/* استيراد الخطوط: Nunito للإنجليزي، Tajawal للعربي */
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&family=Nunito:wght@400;500;600;700;800;900&display=swap');
+
+/* ═══════════════════════════════════════
+   🔄 إعادة ضبط — يشيل الهوامش والحشوات الافتراضية
+   ═══════════════════════════════════════ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ═══════════════════════════════════════
+   📄 الجسم — الخلفية والخط الافتراضي لكل الصفحات
+   ═══════════════════════════════════════ */
+body {
+  background: #f0f4ff;
+  color: #2d3748;
+  font-family: 'Nunito', 'Tajawal', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* لون التحديد لما المستخدم يظلل نص */
+::selection {
+  background: rgba(99, 102, 241, 0.2);
+  color: #1a202c;
+}
+
+/* شريط التمرير المخصص */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #f0f4ff; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #6366f1, #ec4899);
+  border-radius: 4px;
+}
+
+/* ═══════════════════════════════════════
+   📦 حاوية التطبيق — تلف كل محتوى صفحة /home
+   ═══════════════════════════════════════ */
+.App {
+  width: 100%;
+  max-width: 100vw;
+  margin: 0 auto;
+  padding: 0;
+  overflow-x: hidden;
+  background: #f0f4ff;
+  min-height: 100vh;
+}
+
+/* يرفع كل العناصر فوق الزخرفة الخلفية */
+.App > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* زخرفة خلفية — دوائر شفافة تعطي عمق للصفحة */
+.App::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(236, 72, 153, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 50% 80%, rgba(139, 92, 246, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ═══════════════════════════════════════
+   📋 بانر التعليمات — الشريط القابل للطي
+   ═══════════════════════════════════════ */
+
+/* الحاوية — تبدأ بعد السايدبار */
+.instructions-banner {
+  margin-left: 220px;
+  padding: 20px 40px 0;
+}
+
+/* زر فتح/إغلاق التعليمات */
+.instructions-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+  border-radius: 16px;
+  border: 2px solid rgba(99, 102, 241, 0.1);
+  background: linear-gradient(135deg, #fff 0%, #f8faff 100%);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: 'Nunito', sans-serif;
+  box-shadow: 0 2px 12px rgba(99, 102, 241, 0.05);
+}
+
+.instructions-toggle:hover {
+  border-color: rgba(254, 254, 254, 0.2);
+  box-shadow: 0 6px 24px rgba(99, 102, 241, 0.1);
+  transform: translateY(-1px);
+}
+
+/* أيقونة الكتاب */
+.instructions-toggle-icon { font-size: 22px; }
+
+/* نص الزر */
+.instructions-toggle-text {
+  flex: 1;
+  text-align: left;
+  font-size: 15px;
+  font-weight: 700;
+  color: #4a5568;
+}
+
+/* سهم الطي */
+.instructions-toggle-arrow {
+  font-size: 12px;
+  color: #a0aec0;
+  transition: transform 0.3s ease;
+}
+
+/* محتوى التعليمات لما ينفتح — ينزل بحركة */
+.instructions-dropdown {
+  margin-top: 12px;
+  animation: slideDown 0.35s ease;
+}
+
+/* بطاقة التعليمات البيضاء */
+.instructions-section {
+  background: #fff;
+  padding: 32px;
+  border-radius: 24px;
+  box-shadow: 0 4px 24px rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(99, 102, 241, 0.08);
+  max-width: 1200px;
+  margin: 0 auto;
+  animation: fadeIn 0.7s ease;
+}
+
+/* عنوان التعليمات */
+.instructions-title {
+  text-align: center;
+  color: #1a202c;
+  margin-bottom: 28px;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  display: block;
+  position: relative;
+}
+
+/* خط ملون تحت عنوان التعليمات */
+.instructions-title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(135deg, #E5A833, #F5C563);
+  border-radius: 2px;
+  margin: 14px auto 0;
+}
+
+/* شبكة عناصر التعليمات — تتكيف مع العرض */
+.instructions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+}
+
+/* عنصر تعليمة واحد */
+.instruction-item {
+  background: linear-gradient(135deg, #f8faff 0%, #fdf5e6 100%);
+  border: 1px solid rgba(229, 168, 51, 0.1);
+  padding: 18px 20px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.instruction-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(229, 168, 51, 0.15);
+}
+
+/* رقم التعليمة — الدائرة البنفسجية */
+.bullet-number {
+  background: linear-gradient(135deg, #141C35, #1E2745);
+  box-shadow: 0 4px 12px rgba(20, 28, 53, 0.3);
+  color: white;
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+/* نص التعليمة */
+.instruction-item p {
+  margin: 0;
+  font-size: 14px;
+  color: #4a5568;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+/* ═══════════════════════════════════════
+   🧩 الحاوية الرئيسية — المنطقة يمين السايدبار
+   ═══════════════════════════════════════ */
+.main-container {
+  margin-left: 220px; /* يبدأ بعد السايدبار */
+  padding: 32px 60px;
+  min-height: calc(100vh - 100px);
+  background-color: transparent;
+  max-width: none;
+}
+
+/* حاوية قاعدة المعرفة — عرض كامل مع حركة ظهور */
+.knowledge-base {
+  width: 100%;
+  animation: fadeIn 0.7s ease 0.2s both;
+}
+
+/* ═══════════════════════════════════════
+   🔲 السايدبار — القائمة الجانبية الثابتة
+   ═══════════════════════════════════════ */
+.sidebar {
+  width: 220px;
+  height: 100vh;
+  position: fixed; /* ثابت — ما يتحرك مع التمرير */
+  top: 0;
+  left: 0;
+  background: #141C35;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  z-index: 10;
+  overflow-y: auto;
+}
+
+/* ═══ الشعار ═══ */
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 24px 20px 16px;
+}
+
+.sidebar-logo-img { width: 32px; height: 32px; border-radius: 9px; }
+.sidebar-logo-text { font-size: 17px; font-weight: 800; color: #ffffff; }
+
+/* ═══ العناوين الصغيرة (LEARNING PATH, OTHER) ═══ */
+.sidebar-label {
+  font-size: 9px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.2);
+  letter-spacing: 1.5px;
+  padding: 12px 24px 6px;
+}
+
+/* ═══ أزرار الأقسام ═══ */
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 16px;
+  margin: 0 8px 2px;
+  border-radius: 9px;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.4);
+  transition: all 0.2s;
+}
+
+.sidebar-item:hover {
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* القسم المختار — ذهبي */
+.sidebar-item.active {
+  background: rgba(229, 168, 51, 0.12);
+  color: #E5A833;
+  font-weight: 700;
+}
+
+.sidebar-item-text { flex: 1; text-align: left; }
+.sidebar-item-badge { font-size: 10px; font-weight: 700; }
+
+/* مساحة فاضية تدفع التقدم والخروج للأسفل */
+.sidebar-spacer { flex: 1; }
+
+/* ═══ بطاقة التقدم الكلي ═══ */
+.sidebar-progress {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin: 0 16px 8px;
+}
+
+.sidebar-progress-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  margin-bottom: 6px;
+}
+
+.sidebar-progress-header span:first-child { color: rgba(255, 255, 255, 0.4); font-weight: 600; }
+.sidebar-progress-pct { color: #E5A833; font-weight: 800; }
+
+/* شريط التقدم */
+.sidebar-progress-bar {
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.sidebar-progress-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #E5A833, #F5C563);
+  transition: width 0.5s;
+}
+
+.sidebar-progress-count { font-size: 10px; color: rgba(255, 255, 255, 0.3); margin-top: 4px; }
+
+/* ═══ زر الخروج ═══ */
+.sidebar-logout {
+  width: calc(100% - 32px);
+  margin: 0 16px 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.3);
+  transition: all 0.2s;
+}
+
+.sidebar-logout:hover {
+  background: rgba(239, 68, 68, 0.1);
+  color: #EF4444;
+}
+
+/* ═══════════════════════════════════════
+   📱 ريسبونسف
+   ═══════════════════════════════════════ */
+
+/* أقل من 1024 — يختفي السايدبار */
+@media (max-width: 1024px) {
+  .main-container { margin-left: 0; padding: 20px; }
+  .instructions-banner { margin-left: 0; }
+  .sidebar { display: none; }
+}
+
+/* أقل من 768 — التعليمات عمود واحد */
+@media (max-width: 768px) {
+  .instructions-grid { grid-template-columns: 1fr; }
+}
+
+/* ═══════════════════════════════════════
+   ✨ الحركات
+   ═══════════════════════════════════════ */
+
+/* ظهور تدريجي من الأسفل */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* انزلاق للأسفل — للتعليمات */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Meetings Page ===== */
+
+.meetings-page {
+  padding: 24px;
+  direction: rtl;
+  max-width: 600px;
+}
+
+.meetings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.meetings-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.meetings-add-btn {
+  background: #0f172a;
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.meetings-add-btn:hover {
+  background: #1e293b;
+}
+
+/* Form */
+
+.meetings-form {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.meetings-input {
+  width: 80%;
+  padding: 10px 14px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #1e293b;
+  background: #fafbfc;
+  direction: rtl;
+}
+
+.meetings-input:focus {
+  outline: none;
+  border-color: #0f172a;
+}
+
+.meetings-form-row {
+  display: flex;
+  gap: 10px;
+}
+
+.meetings-form-row .meetings-input {
+  flex: 1;
+}
+
+.meetings-form-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.meetings-submit-btn {
+  flex: 1;
+  padding: 10px;
+  background: #0f172a;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.meetings-submit-btn:hover {
+  background: #1e293b;
+}
+
+.meetings-cancel-btn {
+  flex: 1;
+  padding: 10px;
+  background: #fff;
+  color: #64748b;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.meetings-cancel-btn:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
+}
+
+/* Empty */
+
+.meetings-empty {
+  text-align: center;
+  color: #94a3b8;
+  font-size: 14px;
+  padding: 40px 0;
+}
+
+/* Meeting Item */
+
+.meetings-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #e8ecf1;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 8px;
+}
+
+.meetings-item:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.meetings-item-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+
+.meetings-item-date {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.meetings-delete-btn {
+  background: none;
+  border: none;
+  color: #cbd5e1;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.meetings-delete-btn:hover {
+  color: #ef4444;
+}
+
+/* Meeting Button in Sidebar */
+
+.sidebar-meeting-btn {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 16px;
+  margin: 0 8px 2px;
+  border-radius: 9px;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.4);
+  transition: all 0.2s;
+  width: calc(100% - 16px);
+}
+
+.sidebar-meeting-btn:hover {
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.sidebar-meeting-btn.active {
+  background: rgba(229, 168, 51, 0.12);
+  color: #E5A833;
+  font-weight: 700;
+}

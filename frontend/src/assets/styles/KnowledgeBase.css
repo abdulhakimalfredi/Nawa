@@ -1,0 +1,193 @@
+/* ═══════════════════════════════════════
+   📚 Knowledge Base - New Design
+   ═══════════════════════════════════════ */
+.kb-container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 10px 40px;
+}
+
+/* ═══ الترحيب ═══ */
+.kb-welcome {
+  font-size: 32px;
+  font-weight: 900;
+  color: #1a202c;
+  margin: 0 0 4px;
+  letter-spacing: -1px;
+}
+
+.kb-path-label {
+  font-size: 15px;
+  color: #a0aec0;
+  font-weight: 600;
+  margin: 0 0 28px;
+}
+
+/* ═══ شريط التقدم ═══ */
+.kb-progress-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.kb-progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a202c;
+}
+
+.kb-progress-fraction {
+  font-weight: 800;
+  color: #1a202c;
+}
+
+.kb-progress-bar {
+  height: 10px;
+  border-radius: 5px;
+  background: #e2e8f0;
+  overflow: hidden;
+}
+
+.kb-progress-fill {
+  height: 100%;
+  border-radius: 5px;
+  background: linear-gradient(90deg, #1a202c 0%, #e5a833 100%);
+  transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ═══ قائمة المواضيع ═══ */
+.kb-topics-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ═══ بطاقة الموضوع ═══ */
+.kb-topic-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #fff;
+  padding: 20px 24px;
+  border-radius: 16px;
+  border: 2px solid transparent;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease;
+}
+
+.kb-topic-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* الموضوع المكتمل */
+.kb-topic-card.kb-done {
+  background: #fafafa;
+  opacity: 0.75;
+}
+
+/* الموضوع الحالي */
+.kb-topic-card.kb-current {
+  border-color: #e5a833;
+  background: #fffdf5;
+  box-shadow: 0 4px 20px rgba(229, 168, 51, 0.12);
+}
+
+/* ═══ الرقم / علامة الصح ═══ */
+.kb-topic-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 800;
+  flex-shrink: 0;
+  background: #f0f4ff;
+  color: #a0aec0;
+  border: 2px solid #e2e8f0;
+}
+
+.kb-number-done {
+  background: #f0fdf4;
+  color: #22c55e;
+  border-color: #bbf7d0;
+  font-size: 16px;
+}
+
+.kb-number-current {
+  background: #fffbeb;
+  color: #e5a833;
+  border-color: #e5a833;
+}
+
+/* ═══ عنوان الموضوع ═══ */
+.kb-topic-title {
+  flex: 1;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a202c;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.kb-topic-title:hover {
+  color: #6366f1;
+}
+
+.kb-title-done {
+  text-decoration: line-through;
+  color: #a0aec0 !important;
+  font-weight: 600;
+}
+
+/* ═══ شارة "Done" ═══ */
+.kb-badge-done {
+  font-size: 13px;
+  font-weight: 700;
+  color: #22c55e;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.kb-badge-done:hover {
+  background: #f0fdf4;
+}
+
+/* ═══ زر "Start" ═══ */
+.kb-btn-start {
+  padding: 10px 28px;
+  border-radius: 10px;
+  border: none;
+  background: #141C35;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+
+.kb-btn-start:hover {
+  background: #1e2a4a;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(20, 28, 53, 0.3);
+}
+
+/* ═══ رسالة فاضية ═══ */
+.kb-empty {
+  text-align: center;
+  color: #a0aec0;
+  font-size: 15px;
+  padding: 60px 20px;
+  font-weight: 600;
+}
