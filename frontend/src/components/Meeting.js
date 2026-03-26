@@ -5,7 +5,7 @@ export default function Meeting() {
   const [meetings, setMeetings] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const [form, setForm] = useState({ title: '', date: '', time: '' });
-  const API = "http://127.0.0.1:8001/api/meetings";
+  const API = "http://127.0.0.1:8000/api/meetings";
   useEffect(()=> {
     axios.get(API).then((res)=> setMeetings(res.data))
     .catch((err)=>console.log(err)); },[])

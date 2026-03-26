@@ -10,7 +10,7 @@ export default function App() {
   const [activePage, setActivePage] = useState("knowledge");
   const [topics, setTopics] = useState([]);
   useEffect(() => {
-  axios.get("http://127.0.0.1:8001/api/topics")
+  axios.get("http://127.0.0.1:8000/api/topics")
     .then((res) => setTopics(res.data))
     .catch((err) => console.log(err));
 }, []);

@@ -6,7 +6,7 @@ export function useTopics() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8001/api/topics")
+    fetch("http://127.0.0.1:8000/api/topics")
       .then((res) => res.json())
       .then((data) => {
         setTopics(data);
