@@ -1,21 +1,27 @@
-
 import "../assets/styles/KnowledgeBase.css";
+import { useState } from "react";
+import SummaryModal from "./SummaryModal";
 export default function KnowledgeBase({
   ActivePath,
   setCompletedTopics,
   completedTopics,
   TopicList,
 }) {
-  //يأخذ فقط الدروس التي تنتمي للمسار المختار حالياً. 
+  const [showModal, setShowModal] = useState(false);
+  const [selectedTopic, setSelectedTopic] = useState(null);
+
+  //يأخذ فقط الدروس التي تنتمي للمسار المختار حالياً.
   const currentTopics = TopicList.filter(
-    (topic) => topic.path === ActivePath.id
+    (topic) => topic.path === ActivePath.id,
   );
 
-  const doneCount = currentTopics.filter((t) => completedTopics.includes(t.id)).length;
+  const doneCount = currentTopics.filter((t) =>
+    completedTopics.includes(t.id),
+  ).length;
 
   // أول موضوع غير مكتمل
   const firstIncompleteId = currentTopics.find(
-    (t) => !completedTopics.includes(t.id)
+    (t) => !completedTopics.includes(t.id),
   )?.id;
 
   function handleToggle(topicId) {
@@ -68,7 +74,9 @@ export default function KnowledgeBase({
               return (
                 <div key={topic.id} className={cardClass}>
                   {/* الرقم أو علامة الصح */}
-                  <div className={`kb-topic-number ${isDone ? "kb-number-done" : ""} ${isCurrent ? "kb-number-current" : ""}`}>
+                  <div
+                    className={`kb-topic-number ${isDone ? "kb-number-done" : ""} ${isCurrent ? "kb-number-current" : ""}`}
+                  >
                     {isDone ? "✓" : index + 1}
                   </div>
 
@@ -93,12 +101,23 @@ export default function KnowledgeBase({
                     </span>
                   )}
                   {isCurrent && (
-                    <button
-                      className="kb-btn-start"
-                      onClick={() => handleToggle(topic.id)}
-                    >
-                      Start
-                    </button>
+                    <>
+                      <button
+                        className="kb-btn-start"
+                        onClick={() => window.open(topic.url, "_blank")}
+                      >
+                        Start
+                      </button>
+                      <button
+                        className="kb-btn-done"
+                        onClick={() => {
+                          setSelectedTopic(topic);
+                          setShowModal(true);
+                        }}
+                      >
+                        Done
+                      </button>
+                    </>
                   )}
                 </div>
               );
@@ -106,8 +125,23 @@ export default function KnowledgeBase({
           </div>
         </>
       ) : (
-        <p className="kb-empty">Select a path from the sidebar to see the resources.</p>
+        <p className="kb-empty">
+          Select a path from the sidebar to see the resources.
+        </p>
+      )}
+
+      {showModal && selectedTopic && (
+          <SummaryModal
+              topicId={selectedTopic.id}
+              topicTitle={selectedTopic.title}
+              onClose={() => setShowModal(false)}
+              onSuccess={() => {
+                  handleToggle(selectedTopic.id);
+                  setShowModal(false);
+              }}
+          />
       )}
     </div>
   );
 }
+

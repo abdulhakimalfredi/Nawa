@@ -16,14 +16,20 @@ function Login() {
         password,
       });
       localStorage.setItem("token", res.data.token);
-      navigate("/home");
+
+      // شيك على الدور
+      if (res.data.data.role === "manager") {
+        navigate("/manager/dashboard");
+      } else {
+        navigate("/home");
+      }
     } catch (err) {
       setError("Invalid email or password.");
     }
   };
 
   return (
-      <div className="login-wrapper">
+    <div className="login-wrapper">
       {/* خلفية متحركة */}
       <div className="login-bg">
         <div className="login-orb login-orb-1"></div>
@@ -81,5 +87,3 @@ function Login() {
 }
 
 export default Login;
-
-

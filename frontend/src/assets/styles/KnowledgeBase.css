@@ -191,3 +191,18 @@
   padding: 60px 20px;
   font-weight: 600;
 }
+
+.kb-btn-done {
+    background: #e8b923;
+    color: #1a1a2e;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.kb-btn-done:hover {
+    background: #d4a91f;
+}
