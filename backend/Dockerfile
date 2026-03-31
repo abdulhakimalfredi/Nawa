@@ -21,6 +21,7 @@ RUN a2enmod rewrite
 WORKDIR /var/www/html
 COPY . .
 
+RUN cp .env.example .env
 RUN composer install --no-dev --optimize-autoloader
 
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
@@ -29,4 +30,3 @@ RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 EXPOSE 80
 
 CMD ["apache2-foreground"]
-
