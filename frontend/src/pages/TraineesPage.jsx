@@ -12,7 +12,7 @@ function TraineesPage() {
     useEffect(() => {
         const fetchTrainees = async () => {
             try {
-                const res = await axios.get("http://127.0.0.1:8000/api/manager/trainees", {
+                const res = await axios.get("https://nawa-zvyh.onrender.com/api/manager/trainees", {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }

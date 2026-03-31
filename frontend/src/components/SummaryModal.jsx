@@ -15,7 +15,7 @@ function SummaryModal({ topicId, topicTitle, onClose, onSuccess }) {
         setLoading(true);
         try {
             await axios.post(
-                "http://127.0.0.1:8000/api/summaries",
+                "https://nawa-zvyh.onrender.com/api/summaries",
                 {
                     topic_id: topicId,
                     summary: summary,
