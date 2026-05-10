@@ -11,13 +11,13 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("https://nawa-zvyh.onrender.com/api/login", {
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/login`, {
         email,
         password,
       });
       localStorage.setItem("token", res.data.token);
+      localStorage.setItem("user", JSON.stringify(res.data.data));
 
-      // شيك على الدور
       if (res.data.data.role === "manager") {
         navigate("/manager/dashboard");
       } else {

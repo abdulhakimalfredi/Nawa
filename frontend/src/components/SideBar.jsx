@@ -66,9 +66,16 @@ export default function Sidebar({
         </div>
       </div>
       {/* زر الخروج */}
-      <button className="sidebar-logout" onClick={() => navigate("/login")}>
+      <button
+        className="sidebar-logout"
+        onClick={() => {
+          localStorage.removeItem("token");
+          localStorage.removeItem("user");
+          navigate("/login");
+        }}
+      >
         ↩ خروج
-      </button>{" "}
+      </button>
     </div>
   );
 }

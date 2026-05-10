@@ -9,11 +9,17 @@ import Meeting from "../components/Meeting";
 export default function App() {
   const [activePage, setActivePage] = useState("knowledge");
   const [topics, setTopics] = useState([]);
+  const [topicsError, setTopicsError] = useState("");
+
   useEffect(() => {
-  axios.get("https://nawa-zvyh.onrender.com/api/topics")
-    .then((res) => setTopics(res.data))
-    .catch((err) => console.log(err));
-}, []);
+    const token = localStorage.getItem("token");
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/topics`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => setTopics(res.data))
+      .catch(() => setTopicsError("Failed to load topics. Please refresh."));
+  }, []);
 
   const [ActivePath, setActivePath] = useState({ id: "", title: "" });
   const [showInstructions, setShowInstructions] = useState(false);
@@ -58,6 +64,8 @@ export default function App() {
             </div>
           )}
         </div>
+
+        {topicsError && <p style={{ color: "red", textAlign: "center" }}>{topicsError}</p>}
 
         {/* Main 3-Column Layout */}
         <div className="main-container">

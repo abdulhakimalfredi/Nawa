@@ -13,13 +13,14 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("https://nawa-zvyh.onrender.com/api/register", {
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/register`, {
         name,
         email,
         password,
       });
       localStorage.setItem("token", res.data.token);
-      navigate("/login");
+      localStorage.setItem("user", JSON.stringify(res.data.data));
+      navigate("/home");
     } catch (err) {
       setError("Registration failed. Try again.");
     }
