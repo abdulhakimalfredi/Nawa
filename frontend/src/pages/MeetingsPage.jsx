@@ -7,20 +7,19 @@ export default function MeetingsPage() {
     const [meetings, setMeetings] = useState([]);
     const [showForm, setShowForm] = useState(false);
     const [form, setForm] = useState({ title: '', date: '', time: '' });
-    
-    const API = "http://127.0.0.1:8000/api/meetings";
+    const [error, setError] = useState("");
+
+    const API = `${process.env.REACT_APP_API_URL}/meetings`;
     const token = localStorage.getItem("token");
-    
+
     const config = {
-        headers: {
-            Authorization: `Bearer ${token}`
-        }
+        headers: { Authorization: `Bearer ${token}` },
     };
 
     useEffect(() => {
         axios.get(API, config)
             .then((res) => setMeetings(res.data))
-            .catch((err) => console.log(err));
+            .catch(() => setError("Failed to load meetings."));
     }, []);
 
     const handleChange = (e) => {
@@ -35,15 +34,13 @@ export default function MeetingsPage() {
                 setForm({ title: '', date: '', time: '' });
                 setShowForm(false);
             })
-            .catch((err) => console.log(err));
+            .catch(() => setError("Failed to add meeting."));
     };
 
     const handleDelete = (id) => {
         axios.delete(`${API}/${id}`, config)
-            .then(() => {
-                setMeetings(meetings.filter((m) => m.id !== id));
-            })
-            .catch((err) => console.log(err));
+            .then(() => setMeetings(meetings.filter((m) => m.id !== id)))
+            .catch(() => setError("Failed to delete meeting."));
     };
 
     return (
@@ -56,6 +53,8 @@ export default function MeetingsPage() {
                         Add Meeting +
                     </button>
                 </div>
+
+                {error && <p style={{ color: "red" }}>{error}</p>}
 
                 {showForm && (
                     <div className="meetings-form">

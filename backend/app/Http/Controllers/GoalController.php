@@ -41,15 +41,14 @@ class GoalController extends Controller
     // المتدرب يشوف أهدافه
     public function myIndex(Request $request)
     {
-        $goals = Goal::where('user_id', $request->user()->id)->get();
+        $goals = Goal::where('user_id', $request->user()->id)->paginate(20);
 
         return response()->json($goals);
     }
 
-    // المدير يشوف كل الأهداف
     public function index()
     {
-        $goals = Goal::with('user')->get();
+        $goals = Goal::with('user')->paginate(20);
 
         return response()->json($goals);
     }

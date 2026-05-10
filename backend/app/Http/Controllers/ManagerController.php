@@ -33,8 +33,7 @@ class ManagerController extends Controller
 
 public function trainees()
 {
-    // ارجع كل users اللي role = trainee
-    return User::where('role', 'trainee')->get();
+    return User::where('role', 'trainee')->paginate(20);
 }
 
 public function showTrainee($id)

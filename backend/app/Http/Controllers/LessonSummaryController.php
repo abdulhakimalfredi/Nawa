@@ -28,15 +28,14 @@ class LessonSummaryController extends Controller
     {
         $summaries = LessonSummary::where('user_id', $request->user()->id)
             ->with('topic')
-            ->get();
+            ->paginate(20);
 
         return response()->json($summaries);
     }
 
-    // المدير يشوف كل الملخصات
     public function index()
     {
-        $summaries = LessonSummary::with(['user', 'topic'])->get();
+        $summaries = LessonSummary::with(['user', 'topic'])->paginate(20);
 
         return response()->json($summaries);
     }

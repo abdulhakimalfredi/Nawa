@@ -19,7 +19,8 @@ use HasFactory, Notifiable, HasApiTokens;
     protected $fillable = [
         'name',
         'email',
-        'password'
+        'password',
+        'role',
     ];
 
     /**
